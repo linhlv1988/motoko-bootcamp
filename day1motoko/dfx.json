@@ -1,0 +1,35 @@
+{
+  "canisters": {
+    "day1motoko": {
+      "main": "src/day1motoko/main.mo",
+      "type": "motoko"
+    },
+    "day1motoko_assets": {
+      "dependencies": [
+        "day1motoko"
+      ],
+      "frontend": {
+        "entrypoint": "src/day1motoko_assets/src/index.html"
+      },
+      "source": [
+        "src/day1motoko_assets/assets",
+        "dist/day1motoko_assets/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "dfx": "0.9.2",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}
