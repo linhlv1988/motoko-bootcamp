@@ -116,51 +116,29 @@ Note : Do not use a loop. */
 
   };
 
-  //    let arr = Array.freeze(Array.init(7, "abc"));
-  //  let res = Array.foldLeft(arr, "", func (acc, x) { acc # x });
+
+/* Challenge 8 : Write a function squared_array that takes an array [Nat] and returns a new array where each value has been squared.
+Note : Do not use a loop. */
+  public func squared_array(arr: [Nat]): async [Nat] {
+    return Array.map<Nat, Nat>(arr, func (num : Nat) : Nat{
+          return num*num;
+          });
+  };
 
 
-// /* Challenge 8 : Write a function squared_array that takes an array [Nat] and returns a new array where each value has been squared.
-// Note : Do not use a loop. */
-//   public func duplicated_character(t: Text): async Text {
-//     var chars : [Char]= Iter.toArray(t.chars());
-//      for(i in Iter.range(0,t.size() - 2)){
-//       if (chars[i] == chars[i+1]){
-//         return Text.fromChar(chars[i]);
-//         };
-//      };
-//     return t;
-//   };
+/*Challenge 9 : Write a function increase_by_index that takes an array [Nat] and returns a new array where each number has been increased by it's corresponding index.
+Note : increase_by_index [1, 4, 8, 0] -> [1 + 0, 4 + 1 , 8 + 2 , 0 + 3] = [1,5,10,3]
+Note 2 : Do not use a loop. */
+  public func increase_by_index(arr: [Nat]): async [Nat] {
+    return Array.mapEntries<Nat, Nat>(arr, func (num : Nat, i: Nat) : Nat{
+          return num + i;
+          });
+  };
 
 
-// /*Challenge 9 : Write a function increase_by_index that takes an array [Nat] and returns a new array where each number has been increased by it's corresponding index.
-// Note : increase_by_index [1, 4, 8, 0] -> [1 + 0, 4 + 1 , 8 + 2 , 0 + 3] = [1,5,10,3]
-// Note 2 : Do not use a loop. */
-//   public func size_in_bytes(t: Text): async Nat {
-//     //var BlobT = Text.encodeUtf8(t);
-//     return (Blob.toArray(Text.encodeUtf8(t)).size());
-//   };
+/* Challenge 10 : Write a higher order function contains<A> that takes 3 parameters : an array [A] ,
+ a of type A and a function f that takes a tuple of type (A,A) and returns a boolean.
+This function should return a boolean indicating whether or not a is present in the array..*/
 
-
-// /* Challenge 10 : Write a higher order function contains<A> that takes 3 parameters : an array [A] ,
-//  a of type A and a function f that takes a tuple of type (A,A) and returns a boolean.
-// This function should return a boolean indicating whether or not a is present in the array..*/
-//   public func bubble_sort(arr: [Nat] ): async [Nat] {
-//     //Transform an immutable array into a mutable array.
-//     var sortArr : [var Nat] = Array.thaw(arr);
-//     let size = sortArr.size();
-//     for (i in Iter.range(0,size - 1)){
-//       for (j in Iter.range(1, size - i - 1))
-//       {
-//         if (sortArr[j-1] > sortArr[j]) {
-//           var temp : Nat = sortArr[j-1];
-//           sortArr[j-1] := sortArr[j];
-//           sortArr[j] := temp;
-//         };
-//       };
-//       };
-//     //Transform mutable array into immutable array
-//     return Array.freeze(sortArr);
-//     };
 
 }
