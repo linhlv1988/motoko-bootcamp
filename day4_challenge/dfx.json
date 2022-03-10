@@ -1,0 +1,35 @@
+{
+  "canisters": {
+    "day4_challenge": {
+      "main": "src/day4_challenge/main.mo",
+      "type": "motoko"
+    },
+    "day4_challenge_assets": {
+      "dependencies": [
+        "day4_challenge"
+      ],
+      "frontend": {
+        "entrypoint": "src/day4_challenge_assets/src/index.html"
+      },
+      "source": [
+        "src/day4_challenge_assets/assets",
+        "dist/day4_challenge_assets/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "dfx": "0.9.2",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}
