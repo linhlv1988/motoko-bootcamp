@@ -12,8 +12,8 @@ module{
     Note : As this is a public function of a module, you don't need to make the return type Async ! */
     public func animal_sleep(a : Animal): Animal{
         let animal : Animal = {
-            specie = a.specie;
-            enery = 10;
+        specie = a.specie;
+        enery = 10;
         };
         return animal;
     };

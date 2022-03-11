@@ -1,0 +1,22 @@
+type TextLabel = 
+ record {
+   labeled: bool;
+   senti: text;
+   "text": text;
+ };
+type Animal = 
+ record {
+   enery: nat;
+   specie: text;
+ };
+service : {
+  check_get: (nat) -> (opt Animal);
+  check_is_null: () -> (bool);
+  check_last: () -> (opt Animal);
+  check_reverse: () -> (vec Animal);
+  check_size: () -> (nat);
+  create_animal_then_takes_a_break: (text, nat) -> (Animal);
+  fun: () -> (TextLabel);
+  get_animals: () -> (vec Animal);
+  push_animal: (Animal) -> ();
+}

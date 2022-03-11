@@ -10,6 +10,7 @@ import Option "mo:base/Option";
 import Custom "custom";
 import Animal "animal";
 import List "mo:base/List";
+import newList "list";
 
 actor {
 
@@ -60,5 +61,41 @@ Note : Be creative */
    public func get_animals(): async [Animal] {
     return List.toArray(animals);
   };
+
+
+  /* Challenge 7 : Write a function is_null that takes l of type List<T> and returns a boolean indicating if the list is null .
+   Tips : Try using a switch/case. */
+  public func check_is_null (): async Bool{
+    return newList.is_null(animals); 
+  };
+
+    /* Challenge 8 : Write a function last that takes l of type List<T> and returns the optional last element of this list. */
+  public func check_last (): async ?Animal{
+    return newList.last(animals); 
+  };
+
+
+  /* Challenge 9 : Write a function size that takes l of type List<T> and returns a Nat indicating the size of this list.
+Note : If l is null , this function will return 0. */
+  public func check_size (): async Nat{
+    return newList.size(animals); 
+  };
+
+
+  /* Challenge 10 : Write a function get that takes two arguments : l of type List<T> and n of type Nat this function should return the optional value at rank n in the list.*/
+   public func check_get (n : Nat): async ?Animal{
+    if(n > newList.size(animals))
+      return null;
+    return newList.get(animals, n); 
+  };
+
+
+    /* Challenge 11 : Write a function reverse that takes l of type List and returns the reversed list.*/
+   public func check_reverse (): async [Animal] {
+    return List.toArray(newList.reverse(animals)); 
+  };
+  
+
+
 
 }
