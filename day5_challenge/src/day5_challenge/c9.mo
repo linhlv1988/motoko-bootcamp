@@ -5,14 +5,20 @@ import Char "mo:base/Char";
 import Principal "mo:base/Principal";
 import HashMap "mo:base/HashMap";
 import Cycles "mo:base/ExperimentalCycles";
+
 actor {
 
-/*Challenge 1 : Write a function is_anonymous that takes no arguments but returns true is the caller is anonymous and false otherwise. */
-   public shared({caller}) func is_anonymous() : async Bool {
-        return Principal.isAnonymous(caller);
+    stable var entries : [(Principal, Nat)] = [];
+
+    system func preupgrade() {
+        entries := Iter.toArray(favoriteNumber.entries());
     };
 
+    system func postupgrade() {
+        entries := [];
+    };
 
+   
        /* Challenge 2 : Create an HashMap called favoriteNumber where the keys are Principal and the value are Nat. */
   let favoriteNumber = HashMap.HashMap<Principal, Nat>(0, Principal.equal, Principal.hash);
   
@@ -56,28 +62,5 @@ delete_favorite_number
       return "You have successfully deleted your number";
   };
 
-  /* Challenge 6 : Write a function deposit_cycles that allow anyone to deposit cycles into the canister. 
-  This function takes no parameter but returns n of type Nat corresponding to the amount of cycles deposited by the call.
-*/ public func deposit_cycles(): async Nat {
-        return 100_000;
-    };
-
-  /* Challenge 7 (hard ⚠️) : Write a function withdraw_cycles that takes a parameter n of type Nat
-   corresponding to the number of cycles you want to withdraw from the canister and send it to caller
-    asumming the caller has a callback called deposit_cycles()
-Note : You need two canisters.
-Note 2 : Don't do that in production without admin protection or your might be the target 
-of a cycle draining attack.*/
- public func withdraw_cycles(amount : Nat): async () {
-        if(Cycles.available() > amount)
-            Cycles.add(amount);
-    };
-
-  /* Challenge 8 : Rewrite the counter (of day 1) but this time the counter will be kept accross ugprades. 
-  Also declare a variable of type Nat called versionNumber that will keep track of how many times your canister has been upgraded.*/
-    stable var Counter : Nat = 0;
-    public func counter(n : Nat) : async Nat {
-      Counter += n;
-      return Counter; 
-    };
-}
+    
+};
